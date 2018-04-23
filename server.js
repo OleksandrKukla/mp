@@ -4,7 +4,7 @@ let nodeStatic = require( 'node-static' ),
     http = require( 'http' );
 
 // config
-let file = new nodeStatic.Server( './public', {
+let file = new nodeStatic.Server( './dist', {
     cache: 3600,
     gzip: true
 } );
