@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "webpack-dev-server",
-    "build1": "webpack --mode production"
+    "build": "webpack --mode production"
   },
   "author": "",
   "license": "ISC",
