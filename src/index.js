@@ -7,6 +7,7 @@ import Details from './pages/Details';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ErrorBoundary from './components/ErrorBoundary';
 
 import './style';
 import "bootstrap/scss/bootstrap";
@@ -20,9 +21,15 @@ const Content = () => (
 
 const App = () => (
     <React.Fragment>
-        <Header />
-        <Content />
-        <Footer/>
+        <ErrorBoundary>
+            <Header />
+        </ErrorBoundary>
+        <ErrorBoundary>
+            <Content />
+        </ErrorBoundary>
+        <ErrorBoundary>
+            <Footer/>
+        </ErrorBoundary>
     </React.Fragment>
 );
 
@@ -30,5 +37,5 @@ render(
     <Router.BrowserRouter>
         <App/>
     </Router.BrowserRouter>,
-    document.getElementById("root")
+    document.getElementById('root')
 );

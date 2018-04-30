@@ -16,8 +16,6 @@ export default class Details extends React.PureComponent {
         this.currentMovie = mockObject.find((el) => (
             String(el.id) === this.props.match.params.movieID
         ));
-
-        console.log(this.currentMovie);
     }
 
     render() {
