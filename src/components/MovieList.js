@@ -19,9 +19,9 @@ export default class MovieList extends React.PureComponent {
                                 title={item.title}
                                 year={item.year}
                                 category={item.category}
-                                filmURL={item.filmURL}
-                                yearSearchURL={item.yearSearchURL}
-                                categorySearchUrl={item.categorySearchUrl}
+                                filmURL={'/details/' + item.id}
+                                yearSearchURL={"#"}
+                                categorySearchUrl={"#"}
                             />
                         </div>
                     </For>

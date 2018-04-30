@@ -1,19 +1,34 @@
-import React from "react";
-import { render } from "react-dom";
+import React from 'react';
+import {render} from 'react-dom';
+import * as Router from 'react-router-dom';
 
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import ContentWrapper from "./components/ContentWrapper";
+import Home from './pages/Home';
+import Details from './pages/Details';
+
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 import './style';
 import "bootstrap/scss/bootstrap";
 
+const Content = () => (
+    <Router.Switch>
+        <Router.Route exact path="/" component={Home}/>
+        <Router.Route path="/details/:movieID" component={Details}/>
+    </Router.Switch>
+);
+
 const App = () => (
     <React.Fragment>
-        <Header/>
-        <ContentWrapper/>
+        <Header />
+        <Content />
         <Footer/>
     </React.Fragment>
 );
 
-render(<App />, document.getElementById("root"));
+render(
+    <Router.BrowserRouter>
+        <App/>
+    </Router.BrowserRouter>,
+    document.getElementById("root")
+);

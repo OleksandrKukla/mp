@@ -1,17 +1,20 @@
 import React from 'react';
+import * as Router from 'react-router-dom';
 
 export default ({image, title, year, category, filmURL, yearSearchURL, categorySearchUrl}) => (
     <div className="card movie-preview">
-        <a href={filmURL} className="card-img-top poster-wrapper">
+        <Router.Link to={filmURL} className="card-img-top poster-wrapper">
             <img src={image} alt={title}/>
-        </a>
+        </Router.Link>
         <div className="card-body">
-            <a href={yearSearchURL} className="badge badge-secondary float-right mt-1 ml-2">
-                {year}
+            <a href={yearSearchURL}>
+                <span className="badge badge-secondary float-right mt-1 ml-2">
+                    {year}
+                </span>
             </a>
-            <a href={filmURL}>
+            <Router.Link to={filmURL}>
                 {title}
-            </a>
+            </Router.Link>
             <div className="mt-1">
                 <a href={categorySearchUrl}>
                     <small>{category}</small>

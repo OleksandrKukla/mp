@@ -16,6 +16,12 @@ module.exports = function(env, options) {
             extensions: [".js", ".jsx", ".css", ".scss"]
         },
 
+        output: {
+            path: path.resolve(__dirname, 'dist'),
+            filename: 'index_bundle.js',
+            publicPath: '/'
+        },
+
         optimization: {
             splitChunks: {
                 cacheGroups: {
@@ -87,7 +93,8 @@ module.exports = function(env, options) {
         ],
 
         devServer: {
-            contentBase: "./dist"
+            contentBase: "./dist",
+            historyApiFallback: true
         }
     };
 

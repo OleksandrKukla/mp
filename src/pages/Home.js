@@ -1,14 +1,11 @@
 import React from 'react';
 
-import HelpLine from './HelpLine';
-import MovieList from './MovieList';
+import HelpLine from '../components/HelpLine';
+import MovieList from '../components/MovieList';
 
 import mockObject from '../MockFilmList';
 
-export default class ContentWrapper extends React.PureComponent {
-    constructor(props) {
-        super(props);
-    }
+export default class Home extends React.PureComponent {
 
     render() {
         return (
