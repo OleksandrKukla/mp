@@ -1,53 +1,41 @@
-import React from "react";
-import { render } from "react-dom";
-import Component1 from "./Component1";
-import './style.css';
+import React from 'react';
+import {render} from 'react-dom';
+import * as Router from 'react-router-dom';
 
-const styles = {
-    fontFamily: "sans-serif"
-};
+import Home from './pages/Home';
+import Details from './pages/Details';
 
-class Component2 extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            showMessage: false
-        };
-    }
+import Header from './components/Header';
+import Footer from './components/Footer';
+import ErrorBoundary from './components/ErrorBoundary';
 
-    showHideMessage = () => {
-        this.setState({ showMessage: !this.state.showMessage });
-    }
+import './style';
+import "bootstrap/scss/bootstrap";
 
-    render() {
-        return (
-            <div className="component" onClick={this.showHideMessage}>
-                Component 2 says (click to show/hide):{" "}
-                {this.state.showMessage ? this.props.message : ""}
-            </div>
-        );
-    }
-}
-
-class Component3 extends React.PureComponent {
-    render() {
-        return (
-            <div className="component">Component 3 says: {this.props.message}</div>
-        );
-    }
-}
-
-const Component4 = ({ message }) => {
-    return <div className="component">Component 4 says: {message}</div>;
-};
-
-const App = () => (
-    <div style={styles}>
-    <Component1 message="Hello !" />
-    <Component2 message="Hello !!" />
-    <Component3 message="Hello !!!" />
-    <Component4 message="Hello !!!!" />
-    </div>
+const Content = () => (
+    <Router.Switch>
+        <Router.Route exact path="/" component={Home}/>
+        <Router.Route path="/details/:movieID" component={Details}/>
+    </Router.Switch>
 );
 
-render(<App />, document.getElementById("root"));
+const App = () => (
+    <React.Fragment>
+        <ErrorBoundary>
+            <Header />
+        </ErrorBoundary>
+        <ErrorBoundary>
+            <Content />
+        </ErrorBoundary>
+        <ErrorBoundary>
+            <Footer/>
+        </ErrorBoundary>
+    </React.Fragment>
+);
+
+render(
+    <Router.BrowserRouter>
+        <App/>
+    </Router.BrowserRouter>,
+    document.getElementById('root')
+);

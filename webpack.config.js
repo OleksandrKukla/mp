@@ -13,7 +13,13 @@ module.exports = function(env, options) {
         devtool: isProduction ? "none" : "source-map",
 
         resolve: {
-            extensions: [".js", ".jsx"]
+            extensions: [".js", ".jsx", ".css", ".scss"]
+        },
+
+        output: {
+            path: path.resolve(__dirname, 'dist'),
+            filename: 'index_bundle.js',
+            publicPath: '/'
         },
 
         optimization: {
@@ -45,6 +51,33 @@ module.exports = function(env, options) {
                       fallback: "style-loader",
                       use: "css-loader"
                     })
+                },
+                {
+                    test: /\.(jpg|png|svg)$/,
+                    loader: 'url-loader',
+                    options: {
+                        limit: 25000,
+                    },
+                },
+                {
+                    test: /\.(scss)$/,
+                    use: [{
+                        loader: 'style-loader', // inject CSS to page
+                    }, {
+                        loader: 'css-loader', // translates CSS into CommonJS modules
+                    }, {
+                        loader: 'postcss-loader', // Run post css actions
+                        options: {
+                            plugins: function () { // post css plugins, can be exported to postcss.config.js
+                                return [
+                                    require('precss'),
+                                    require('autoprefixer')
+                                ];
+                            }
+                        }
+                    }, {
+                        loader: 'sass-loader' // compiles Sass to CSS
+                    }]
                 }
             ]
         },
@@ -60,7 +93,8 @@ module.exports = function(env, options) {
         ],
 
         devServer: {
-            contentBase: "./dist"
+            contentBase: "./dist",
+            historyApiFallback: true
         }
     };
 
