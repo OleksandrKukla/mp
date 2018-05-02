@@ -3,15 +3,28 @@ import React from 'react';
 import MovieListItem from './MovieListItem';
 
 export default class MovieList extends React.PureComponent {
+
     constructor(props) {
         super(props);
-        this.isEmpty = !(this.props.movieList && this.props.movieList.length);
+
+        this.state = {
+            isEmpty: !(this.props.movieList && this.props.movieList.length)
+        }
+    }
+
+
+    static getDerivedStateFromProps(nextProps) {
+        return {
+            isEmpty: !(
+                nextProps.movieList && nextProps.movieList.length
+            )
+        }
     }
 
     render() {
         return (
             <div className="row pt-3 pb-3">
-                <If false={this.isEmpty}>
+                <If false={this.state.isEmpty}>
                     <For each="item" counter="rowIndex" in={this.props.movieList}>
                         <div className="col-3 mt-3 mb-3" key={'movie-list-item-' + rowIndex}>
                             <MovieListItem

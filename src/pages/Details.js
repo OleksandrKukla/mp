@@ -9,29 +9,30 @@ export default class Details extends React.PureComponent {
     constructor(props) {
         super(props);
 
-        this.updateCurrentMovie();
+        this.state = {
+            currentMovie: null
+        };
+
     }
 
-    updateCurrentMovie () {
-        this.currentMovie = mockObject.find((el) => (
-            String(el.id) === this.props.match.params.movieID
-        ));
+    static getDerivedStateFromProps (nextProps) {
+        return {
+            currentMovie: mockObject.find((el) => String(el.id) === nextProps.match.params.movieID)
+        }
     }
 
     render() {
         return (
             <React.Fragment>
-                <React.Fragment>
-                    <If true={!this.props.match.params.movieID}>
-                        <HelpLine movieList={mockObject}/>
-                    </If>
-                    <If true={this.props.match.params.movieID}>
-                        <HelpLine category={this.currentMovie.category}/>
-                    </If>
-                    <div className="container">
-                        <MovieList movieList={mockObject}/>
-                    </div>
-                </React.Fragment>
+                <If true={!this.props.match.params.movieID}>
+                    <HelpLine movieList={mockObject}/>
+                </If>
+                <If true={this.props.match.params.movieID}>
+                    <HelpLine category={this.state.currentMovie.category}/>
+                </If>
+                <div className="container">
+                    <MovieList movieList={mockObject}/>
+                </div>
             </React.Fragment>
         )
     }

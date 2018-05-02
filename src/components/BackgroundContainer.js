@@ -1,15 +1,17 @@
 import React from 'react';
-import { string } from 'prop-types';
+import { string, node } from 'prop-types';
 
 BackgroundContainer.propTypes = {
-    img: string
+    img: string,
+    children: node,
+    filter: string
 };
 
 export default function BackgroundContainer ({ children, img, filter}) {
 
     let styles = {
         imageWrapper: {
-            backgroundImage: 'url(' + img + ')',
+            backgroundImage: `url(${img})`,
             backgroundPosition: 'center center',
             backgroundSize: 'cover',
         },

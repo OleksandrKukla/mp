@@ -1,19 +1,19 @@
 import React from 'react';
 
+const typeClasses = {
+        outline: 'btn-outline-primary',
+        secondary: 'btn-secondary'
+    },
+    sizeClasses = {
+        small: 'btn-sm'
+    };
+
 export default function ({ title, size, addClasses, type, isActive }) {
-    let typeClasses = {
-            outline: 'btn-outline-primary',
-            secondary: 'btn-secondary'
-        },
-        sizeClasses = {
-            small: 'btn-sm'
-        };
 
     let className = [
         'btn',
-        'btn-primary',
         addClasses,
-        typeClasses[type],
+        typeClasses[type] || 'btn-primary',
         sizeClasses[size],
         isActive && 'active'
     ].join(' ');

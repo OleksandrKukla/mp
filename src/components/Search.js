@@ -3,9 +3,6 @@ import React from 'react';
 import Button from './Button';
 
 export default class Search extends React.PureComponent {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (
@@ -24,7 +21,7 @@ export default class Search extends React.PureComponent {
                         <label className="mr-2">
                             <small className="text-light">SEARCH BY</small>
                         </label>
-                        <Button title={"TITLE"} isActive={true} size={"small"} addClasses="mr-1" />
+                        <Button title={"TITLE"} isActive={true} size={"small"} addClasses="mr-1"/>
                         <Button title={"GENRE"} size={"small"} type={"secondary"}/>
                     </div>
                     <div className="col-auto text-right">
