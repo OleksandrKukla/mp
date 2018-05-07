@@ -1,6 +1,6 @@
 // modules
 let nodeStatic = require( 'node-static' ),
-    port = 8080,
+    port = 8089,
     http = require( 'http' );
 
 // config
