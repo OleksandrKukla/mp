@@ -2,7 +2,8 @@ import React from 'react';
 
 import BackgroundContainer from './BackgroundContainer';
 import SearchResultsCount from './SearchResultsCount';
-import SortingPanel from './SortingPanel';
+
+import SortingPanel_container from '../containers/SortingPanel_container';
 
 export default ({movieList, category}) => (
     <BackgroundContainer filter={"#eee"}>
@@ -14,7 +15,7 @@ export default ({movieList, category}) => (
                     </div>
 
                     <div className="col-auto text-right font-weight-bold">
-                        <SortingPanel/>
+                        <SortingPanel_container/>
                     </div>
                 </div>
             </div>

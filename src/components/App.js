@@ -2,7 +2,7 @@ import React from 'react';
 import * as Router from 'react-router-dom';
 
 import Home from '../pages/Home';
-import Details from '../pages/Details';
+import Details_container from '../containers/Details_container';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -14,17 +14,17 @@ import "bootstrap/scss/bootstrap.scss";
 export const Content = () => (
     <Router.Switch>
         <Router.Route exact path="/" component={Home}/>
-        <Router.Route path="/details/:movieID" component={Details}/>
+        <Router.Route path="/details/:movieID" component={Details_container}/>
     </Router.Switch>
 );
 
 export const App = () => (
     <React.Fragment>
         <ErrorBoundary>
-            <Header />
+            <Header/>
         </ErrorBoundary>
         <ErrorBoundary>
-            <Content />
+            <Content/>
         </ErrorBoundary>
         <ErrorBoundary>
             <Footer/>

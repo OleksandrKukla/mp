@@ -1,9 +1,9 @@
 import React from 'react';
 
 import HelpLine from '../components/HelpLine';
-import MovieList from '../components/MovieList';
 
-import mockObject from '../MockFilmList';
+import MovieList_container from '../containers/MovieList_container';
+import HelpLine_container from '../containers/HelpLine_container';
 
 export default class Details extends React.PureComponent {
     constructor(props) {
@@ -17,7 +17,7 @@ export default class Details extends React.PureComponent {
 
     static getDerivedStateFromProps (nextProps) {
         return {
-            currentMovie: mockObject.find((el) => String(el.id) === nextProps.match.params.movieID)
+            currentMovie: nextProps.movieList.find((el) => String(el.id) === nextProps.match.params.movieID)
         }
     }
 
@@ -25,13 +25,13 @@ export default class Details extends React.PureComponent {
         return (
             <React.Fragment>
                 <If true={!this.props.match.params.movieID}>
-                    <HelpLine movieList={mockObject}/>
+                    <HelpLine_container />
                 </If>
                 <If true={this.props.match.params.movieID}>
                     <HelpLine category={this.state.currentMovie.category}/>
                 </If>
                 <div className="container">
-                    <MovieList movieList={mockObject}/>
+                    <MovieList_container/>
                 </div>
             </React.Fragment>
         )

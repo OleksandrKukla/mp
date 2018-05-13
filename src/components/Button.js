@@ -8,7 +8,7 @@ const typeClasses = {
         small: 'btn-sm'
     };
 
-export default function ({ title, size, addClasses, type, isActive }) {
+export default function ({ title, size, addClasses, type, isActive, onClick }) {
 
     let className = [
         'btn',
@@ -19,7 +19,7 @@ export default function ({ title, size, addClasses, type, isActive }) {
     ].join(' ');
 
     return (
-        <button type="button" className={className}>
+        <button type="button" className={className} onClick={onClick}>
             {title}
         </button>
     )

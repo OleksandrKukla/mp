@@ -3,7 +3,7 @@ import * as Router from 'react-router-dom';
 
 import BackgroundContainer from './BackgroundContainer';
 import Search from './Search';
-import MovieDetails from './MovieDetails';
+import MovieDetails_container from '../containers/MovieDetails_container';
 import Button from './Button';
 
 import backgroundImage from '../img/bg.jpg';
@@ -30,7 +30,7 @@ export default (props) => (
 
                 <Router.Switch>
                     <Router.Route exact path="/" component={Search}/>
-                    <Router.Route path="/details/:movieID" component={MovieDetails}/>
+                    <Router.Route path="/details/:movieID" component={MovieDetails_container}/>
                 </Router.Switch>
 
                 {props.children}
