@@ -6,7 +6,7 @@ import SearchResultsCount from './SearchResultsCount';
 import SortingPanel from '../containers/SortingPanel.container';
 
 export default ({movieList, category}) => (
-    <BackgroundContainer filter={"#eee"}>
+    <BackgroundContainer filter="#eee">
         <If true={!!(movieList && movieList.length && !category)}>
             <div className="container pt-2 pb-2 clearfix">
                 <div className="row">

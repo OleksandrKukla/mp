@@ -21,11 +21,11 @@ export default class Search extends React.PureComponent {
                         <label className="mr-2">
                             <small className="text-light">SEARCH BY</small>
                         </label>
-                        <Button title={"TITLE"} isActive={true} size={"small"} addClasses="mr-1"/>
-                        <Button title={"GENRE"} size={"small"} type={"secondary"}/>
+                        <Button title="TITLE" isActive={true} size="small" addClasses="mr-1"/>
+                        <Button title="GENRE" size="small" type="secondary"/>
                     </div>
                     <div className="col-auto text-right">
-                        <Button title={"SEARCH"}/>
+                        <Button title="SEARCH"/>
                     </div>
                 </div>
             </React.Fragment>

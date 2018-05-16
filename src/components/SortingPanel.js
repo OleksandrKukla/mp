@@ -27,18 +27,18 @@ export default class SortingPanel extends React.PureComponent {
         return (
             <React.Fragment>
                 <span className="mr-2">Sort By</span>
-                <Button title={"release date"}
+                <Button title="release date"
                         isActive={this.getCurrentSortingType() === SORTING_BY_DATE}
-                        size={"small"}
-                        type={"outline"}
-                        addClasses={"mr-1"}
+                        size="small"
+                        type="outline"
+                        addClasses="mr-1"
                         onClick={this.sortByDate}
                 />
                 <Button
-                    title={"rating"}
+                    title="rating"
                     isActive={this.getCurrentSortingType() === SORTING_BY_RATING}
-                    size={"small"}
-                    type={"outline"}
+                    size="small"
+                    type="outline"
                     onClick={this.sortByRating}
                 />
             </React.Fragment>

@@ -7,7 +7,7 @@ import logo from '../img/logo.png';
 
 export default (props) => (
     <footer>
-        <BackgroundContainer img={backgroundImage} filter={"rgba(0,0,0,0.8)"}>
+        <BackgroundContainer img={backgroundImage} filter="rgba(0,0,0,0.8)">
             <div className="container">
                 {props.children}
                 <div className="row pt-3 pb-3">
