@@ -2,38 +2,33 @@ import React from 'react';
 
 import Button from './Button';
 
+import {setSortingType} from '../redux/actions/index';
+
+import {SORTING_BY_RATING, SORTING_BY_DATE} from '../constants';
+
 export default class SortingPanel extends React.PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isSortedByDate: true
-        };
-
-        this.props.sortByDate();
-    }
-
     sortByDate = () => {
-        this.setState({
-            isSortedByDate: true
-        });
-
-        this.props.sortByDate();
+        this.props.dispatch(
+            setSortingType(SORTING_BY_DATE)
+        );
     };
 
     sortByRating = () => {
-        this.setState({
-            isSortedByDate: false
-        });
-
-        this.props.sortByRating();
+        this.props.dispatch(
+            setSortingType(SORTING_BY_RATING)
+        )
     };
+
+    getCurrentSortingType = () => (
+        this.props.state && this.props.state.movies.sortingType
+    );
 
     render() {
         return (
             <React.Fragment>
                 <span className="mr-2">Sort By</span>
                 <Button title={"release date"}
-                        isActive={this.state.isSortedByDate}
+                        isActive={this.getCurrentSortingType() === SORTING_BY_DATE}
                         size={"small"}
                         type={"outline"}
                         addClasses={"mr-1"}
@@ -41,7 +36,7 @@ export default class SortingPanel extends React.PureComponent {
                 />
                 <Button
                     title={"rating"}
-                    isActive={!this.state.isSortedByDate}
+                    isActive={this.getCurrentSortingType() === SORTING_BY_RATING}
                     size={"small"}
                     type={"outline"}
                     onClick={this.sortByRating}

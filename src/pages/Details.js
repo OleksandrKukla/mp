@@ -1,9 +1,7 @@
 import React from 'react';
 
-import HelpLine from '../components/HelpLine';
-
-import MovieList_container from '../containers/MovieList_container';
-import HelpLine_container from '../containers/HelpLine_container';
+import MovieList from '../containers/MovieList.container';
+import HelpLine from '../containers/HelpLine.container';
 
 export default class Details extends React.PureComponent {
     constructor(props) {
@@ -17,7 +15,9 @@ export default class Details extends React.PureComponent {
 
     static getDerivedStateFromProps (nextProps) {
         return {
-            currentMovie: nextProps.movieList.find((el) => String(el.id) === nextProps.match.params.movieID)
+            currentMovie: nextProps.movieList.find(
+                (el) => String(el.id) === nextProps.match.params.movieID
+            )
         }
     }
 
@@ -25,13 +25,13 @@ export default class Details extends React.PureComponent {
         return (
             <React.Fragment>
                 <If true={!this.props.match.params.movieID}>
-                    <HelpLine_container />
+                    <HelpLine />
                 </If>
                 <If true={this.props.match.params.movieID}>
-                    <HelpLine category={this.state.currentMovie.category}/>
+                    <HelpLine category={this.state.currentMovie && this.state.currentMovie.category}/>
                 </If>
                 <div className="container">
-                    <MovieList_container/>
+                    <MovieList/>
                 </div>
             </React.Fragment>
         )

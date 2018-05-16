@@ -1,4 +1,10 @@
-const parseMovieData = (data) => ({
+import {
+    SORTING_BY_DATE,
+    SET_FULL_LIST_ACTION,
+    SET_SORTING_TYPE_ACTION
+} from "../../constants";
+
+const transformMovieData = (data) => ({
     id: String(data.id),
     image: data.image,
     title: data.title,
@@ -10,18 +16,17 @@ const parseMovieData = (data) => ({
     description: data.description
 });
 
-const compareDates = (movie_1, movie_2) => {
-    const date_1 = String(movie_1.year).split('-').join('');
-    const date_2 = String(movie_2.year).split('-').join('');
-
-    return Number(date_2) - Number(date_1);
+const defaultState = {
+    sortingType: SORTING_BY_DATE,
+    movieFullList: [],
+    movieList: []
 };
 
-const movies = (state = [], action) => {
+const movies = (state = defaultState, action) => {
     switch (action.type) {
-        case 'SET_FULL_LIST_STATE':
-            let movieFullList = action.movieFullList.map(parseMovieData),
-                movieList = (state.movieList) ? state.movieList : Object.assign([], movieFullList);
+        case SET_FULL_LIST_ACTION:
+            let movieFullList = action.movieFullList.map(transformMovieData),
+                movieList = (state.movieList.length) ? state.movieList : [...movieFullList];
 
             return {
                 ...state,
@@ -29,18 +34,10 @@ const movies = (state = [], action) => {
                 movieList
             };
 
-        case 'SORT_BY_DATE':
+        case SET_SORTING_TYPE_ACTION:
             return {
                 ...state,
-                movieList: Object.assign([], state.movieList.sort(compareDates))
-            };
-
-        case 'SORT_BY_RATING':
-            return {
-                ...state,
-                movieList: Object.assign([], state.movieList.sort(
-                    (movie_1, movie_2) => (Number(movie_2.rating) - Number(movie_1.rating))
-                ))
+                sortingType: action.sortingType
             };
 
         default:

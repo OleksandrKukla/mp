@@ -1,16 +1,16 @@
 import React from 'react';
 
-import MovieList_container from '../containers/MovieList_container';
-import HelpLine_container from '../containers/HelpLine_container';
+import MovieList from '../containers/MovieList.container';
+import HelpLine from '../containers/HelpLine.container';
 
 export default class Home extends React.PureComponent {
 
     render() {
         return (
             <React.Fragment>
-                <HelpLine_container/>
+                <HelpLine/>
                 <div className="container">
-                    <MovieList_container/>
+                    <MovieList/>
                 </div>
             </React.Fragment>
         )
