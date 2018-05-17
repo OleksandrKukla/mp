@@ -1,12 +1,10 @@
-import 'whatwg-fetch';
-
 import {
     STORAGE_NAME,
     SET_FULL_LIST_ACTION,
     SET_SORTING_TYPE_ACTION
 } from "../../constants";
 
-const transformMovieData = (data) => ({
+export const transformMovieData = (data) => ({
     id: String(data.id),
     image: data.poster_path,
     title: data.title,
@@ -36,7 +34,7 @@ export function fetchData(url) {
             dispatch(setFullListState(movieList));
         }
 
-        fetch(url)
+        return fetch(url)
             .then(response => response.json())
             .then(value => {
                 if (!(value && value.data)) {
@@ -49,8 +47,6 @@ export function fetchData(url) {
 
                 dispatch(setFullListState(movieList));
 
-            }).catch(function (error) {
-            console.log('There has been a problem with your fetch operation: ' + error.message);
-        });
+            });
     };
 }
