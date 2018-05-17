@@ -17,8 +17,8 @@ import {
     fetchData,
 } from './index';
 
-const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
+const middleWares = [thunk];
+const mockStore = configureMockStore(middleWares);
 
 const mockApiResponse = {"data":[{"id":123,"poster_path":"http://domen.com/some.jpg","title":"Some title","release_date":"1999-03-05","genres":["actions"],"vote_count":300,"runtime":120,"overview":"good movie"}]};
 

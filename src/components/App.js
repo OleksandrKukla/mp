@@ -29,19 +29,17 @@ class App extends React.PureComponent {
 
     render() {
         return (
-            <Router.BrowserRouter>
-                <React.Fragment>
-                    <ErrorBoundary>
-                        <Header/>
-                    </ErrorBoundary>
-                    <ErrorBoundary>
-                        <Content/>
-                    </ErrorBoundary>
-                    <ErrorBoundary>
-                        <Footer/>
-                    </ErrorBoundary>
-                </React.Fragment>
-            </Router.BrowserRouter>
+            <React.Fragment>
+                <ErrorBoundary>
+                    <Header/>
+                </ErrorBoundary>
+                <ErrorBoundary>
+                    <Content/>
+                </ErrorBoundary>
+                <ErrorBoundary>
+                    <Footer/>
+                </ErrorBoundary>
+            </React.Fragment>
         );
     };
 }
@@ -50,5 +48,4 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({fetchData}, dispatch);
 }
 
-
-export default connect(null, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps, null, {pure: false})(App);
