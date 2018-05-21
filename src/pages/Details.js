@@ -8,13 +8,18 @@ export default class Details extends React.PureComponent {
         super(props);
 
         this.state = {
+            cachedProps: null,
             currentMovie: null
         };
-
     }
 
-    static getDerivedStateFromProps (nextProps) {
+    static getDerivedStateFromProps (nextProps, prevState) {
+        if (prevState.cachedProps === nextProps) {
+            return null;
+        }
+
         return {
+            cachedProps: nextProps,
             currentMovie: nextProps.movieList.find(
                 (el) => String(el.id) === nextProps.match.params.movieID
             )
