@@ -1,8 +1,8 @@
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import HelpLine from '../components/HelpLine';
 
-const mapStateToProps = state => ({
-    movieList: state.movies.movieList
+const mapStateToProps = ({movies: {movieList}}) => ({
+    movieList
 });
 
 export default connect(

@@ -10,18 +10,24 @@ export default class MovieList extends React.PureComponent {
         super(props);
 
         this.state = {
+            cachedProps: null,
             isEmpty: !(this.props.movieList && this.props.movieList.length),
             movieList: []
-        }
+        };
     }
 
-    static getDerivedStateFromProps(nextProps) {
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (prevState.cachedProps === nextProps) {
+            return null;
+        }
+
         return {
+            cachedProps: nextProps,
             movieList: MovieList.sortList(nextProps.sortingType, nextProps.movieList),
             isEmpty: !(
                 nextProps.movieList && nextProps.movieList.length
             )
-        }
+        };
     }
 
     static compareDates = (movie_1, movie_2) => {

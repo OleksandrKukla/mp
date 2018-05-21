@@ -1,9 +1,9 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import SortingPanel from '../components/SortingPanel'
 
-const mapStateToProps = state => ({
-    state
+const mapStateToProps = ({movies: {sortingType}}) => ({
+    sortingType
 });
 
 const mapDispatchToProps = dispatch => ({

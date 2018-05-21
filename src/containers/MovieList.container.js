@@ -1,9 +1,9 @@
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import MovieList from '../components/MovieList';
 
-const mapStateToProps = state => ({
-    movieList: state.movies.movieList,
-    sortingType: state.movies.sortingType
+const mapStateToProps = ({movies: {movieList, sortingType}}) => ({
+    movieList,
+    sortingType
 });
 
 export default connect(
