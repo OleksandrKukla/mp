@@ -1,9 +1,8 @@
 import React from 'react';
 
-import mockObject from '../MockFilmList';
-
 export default function (props) {
-    let movieInfo = mockObject.find((el) => (
+
+    let movieInfo = props.movieList.find((el) => (
         String(el.id) === props.match.params.movieID
     ));
 

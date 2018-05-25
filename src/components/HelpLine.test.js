@@ -1,9 +1,16 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {Provider} from 'react-redux';
 
 import HelpLine from './HelpLine';
 
+import configureStore from 'redux-mock-store';
+
+const mockStore = configureStore();
+
 import MockFilmList from '../MockFilmList';
+
+import {SORTING_BY_RATING} from "../constants";
 
 jest.mock('../MockFilmList', () => {
     return [
@@ -34,22 +41,36 @@ jest.mock('../MockFilmList', () => {
 
 describe('Help Line', () => {
 
+    let store = mockStore({
+        movies: {
+            sortingType: SORTING_BY_RATING,
+            movieList: [],
+            movieFullList: []
+        }
+    });
+
     it('Renders correctly (Snapshot)', () => {
         const tree1 = renderer
-                .create(
+            .create(
+                <Provider store={store}>
                     <HelpLine movieList={MockFilmList}/>
-                )
-                .toJSON(),
-            tree2 = renderer
-                .create(
+                </Provider>
+            )
+            .toJSON(),
+        tree2 = renderer
+            .create(
+                <Provider store={store}>
                     <HelpLine category="custom category"/>
-                )
-                .toJSON(),
-            tree3 = renderer
-                .create(
+                </Provider>
+            )
+            .toJSON(),
+        tree3 = renderer
+            .create(
+                <Provider store={store}>
                     <HelpLine/>
-                )
-                .toJSON();
+                </Provider>
+            )
+            .toJSON();
 
         expect(tree1).toMatchSnapshot();
         expect(tree2).toMatchSnapshot();

@@ -1,18 +1,16 @@
 import React from 'react';
 
-import HelpLine from '../components/HelpLine';
-import MovieList from '../components/MovieList';
-
-import mockObject from '../MockFilmList';
+import MovieList from '../containers/MovieList.container';
+import HelpLine from '../containers/HelpLine.container';
 
 export default class Home extends React.PureComponent {
 
     render() {
         return (
             <React.Fragment>
-                <HelpLine movieList={mockObject}/>
+                <HelpLine/>
                 <div className="container">
-                    <MovieList movieList={mockObject}/>
+                    <MovieList/>
                 </div>
             </React.Fragment>
         )
