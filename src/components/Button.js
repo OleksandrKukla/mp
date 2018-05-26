@@ -13,7 +13,7 @@ export default function ({ title, size, addClasses, type, isActive, onClick }) {
     let className = [
         'btn',
         addClasses,
-        typeClasses[type] || 'btn-primary',
+        (!isActive && typeClasses[type]) || 'btn-primary',
         sizeClasses[size],
         isActive && 'active'
     ].join(' ');

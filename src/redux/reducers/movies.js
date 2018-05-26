@@ -26,7 +26,7 @@ const movies = (state = defaultState, action) => {
     switch (action.type) {
         case SET_FULL_LIST_ACTION:
             let movieFullList = action.movieFullList.map(transformMovieData),
-                movieList = (state.movieList.length) ? state.movieList : [...movieFullList];
+                movieList = [...movieFullList];
 
             return {
                 ...state,

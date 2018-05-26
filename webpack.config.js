@@ -13,7 +13,10 @@ module.exports = function(env, options) {
         devtool: isProduction ? "none" : "source-map",
 
         resolve: {
-            extensions: [".js", ".jsx", ".css", ".scss"]
+            extensions: [".js", ".jsx", ".css", ".scss"],
+            alias: {
+                'react-redux': path.join(__dirname, '/node_modules/react-redux/dist/react-redux.min')
+            }
         },
 
         output: {

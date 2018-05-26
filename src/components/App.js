@@ -1,5 +1,6 @@
 import React from 'react';
 import * as Router from 'react-router-dom';
+import {withRouter} from 'react-router';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
@@ -7,6 +8,7 @@ import {fetchData} from '../redux/actions';
 
 import Home from '../pages/Home';
 import Details from '../containers/Details.container';
+import NotFound from '../pages/NotFound';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -16,15 +18,18 @@ import '../style.css';
 import "bootstrap/scss/bootstrap.scss";
 
 export const Content = () => (
-    <Router.Switch>
-        <Router.Route exact path="/" component={Home}/>
-        <Router.Route path="/details/:movieID" component={Details}/>
-    </Router.Switch>
+    <React.Fragment>
+        <Router.Switch>
+            <Router.Route exact path="/" component={Home}/>
+            <Router.Route path="/details/:movieID" component={Details}/>
+            <Router.Route path="*" component={NotFound}/>
+        </Router.Switch>
+    </React.Fragment>
 );
 
 class App extends React.PureComponent {
     componentDidMount() {
-        this.props.fetchData('http://react-cdp-api.herokuapp.com/movies');
+        this.props.fetchData(this.props.location.search);
     }
 
     render() {
@@ -48,4 +53,6 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({fetchData}, dispatch);
 }
 
-export default connect(null, mapDispatchToProps, null, {pure: false})(App);
+const AppWithRouter = withRouter(App);
+
+export default connect(null, mapDispatchToProps, null, {pure: false})(AppWithRouter);
