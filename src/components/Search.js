@@ -30,14 +30,12 @@ class Search extends React.PureComponent {
 
     handleChange = (event) => {
         this.setState({
-            ...this.state,
-            searchString: event.target.value || '',
+            searchString: event.target.value || ''
         });
     };
 
     setSearchType = (type) => {
         this.setState({
-            ...this.state,
             searchBy: type
         });
     };

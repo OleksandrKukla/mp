@@ -18,13 +18,11 @@ import '../style.css';
 import "bootstrap/scss/bootstrap.scss";
 
 export const Content = () => (
-    <React.Fragment>
-        <Router.Switch>
-            <Router.Route exact path="/" component={Home}/>
-            <Router.Route path="/details/:movieID" component={Details}/>
-            <Router.Route path="*" component={NotFound}/>
-        </Router.Switch>
-    </React.Fragment>
+    <Router.Switch>
+        <Router.Route exact path="/" component={Home}/>
+        <Router.Route path="/details/:movieID" component={Details}/>
+        <Router.Route path="*" component={NotFound}/>
+    </Router.Switch>
 );
 
 class App extends React.PureComponent {
