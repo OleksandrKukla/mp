@@ -1,7 +1,8 @@
 import {
     STORAGE_NAME,
     SET_FULL_LIST_ACTION,
-    SET_SORTING_TYPE_ACTION
+    SET_SORTING_TYPE_ACTION,
+    API_ENDPOINT
 } from "../../constants";
 
 export const transformMovieData = (data) => ({
@@ -26,7 +27,12 @@ export const setSortingType = sortingType => ({
     sortingType
 });
 
-export function fetchData(url) {
+export function fetchData(query) {
+    query = (query && query.length && query[0] !== '?')
+        ? `?${query}`
+        : query;
+
+    const url = API_ENDPOINT + query;
 
     return (dispatch) => {
         let movieList = JSON.parse(localStorage.getItem(STORAGE_NAME));

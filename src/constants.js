@@ -10,3 +10,12 @@ export const SET_FULL_LIST_ACTION = 'SET_FULL_LIST';
 
 export const SET_SORTING_TYPE_ACTION = 'SET_SORTING_TYPE';
 
+export const SEARCH_PARAM_NAME = 'search';
+
+export const SEARCHBY_PARAM_NAME = 'searchBy';
+
+export const SEARCH_TITLE = 'title';
+
+export const SEARCH_GENRE = 'genre';
+
+export const API_ENDPOINT = 'http://react-cdp-api.herokuapp.com/movies';
