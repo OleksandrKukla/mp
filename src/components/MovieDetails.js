@@ -1,5 +1,4 @@
 import React from 'react';
-import {Redirect} from 'react-router';
 
 export default function (props) {
 
@@ -37,9 +36,6 @@ export default function (props) {
                         </div>
                     </div>
                 </div>
-            </If>
-            <If false={movieInfo}>
-                <Redirect to="/NotFound"/>
             </If>
         </React.Fragment>
     );
