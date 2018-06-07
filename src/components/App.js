@@ -26,9 +26,6 @@ export const Content = () => (
 );
 
 class App extends React.PureComponent {
-    constructor(props) {
-        super(props);
-    }
 
     componentWillMount() {
         const location = this.props.location;
