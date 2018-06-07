@@ -1,8 +1,10 @@
+import { call, put, all, takeLatest } from 'redux-saga/effects';
+
 import {
-    STORAGE_NAME,
     SET_FULL_LIST_ACTION,
     SET_SORTING_TYPE_ACTION,
-    API_ENDPOINT
+    API_ENDPOINT,
+    FETCH_DATA_ACTION
 } from "../../constants";
 
 export const transformMovieData = (data) => ({
@@ -17,6 +19,11 @@ export const transformMovieData = (data) => ({
     description: data.overview
 });
 
+export const fetchData = (query) => ({
+    type: FETCH_DATA_ACTION,
+    query
+});
+
 export const setFullListState = movieFullList => ({
     movieFullList,
     type: SET_FULL_LIST_ACTION
@@ -27,32 +34,27 @@ export const setSortingType = sortingType => ({
     sortingType
 });
 
-export function fetchData(query) {
+export function* fetchDataAsync({query}) {
     query = (query && query.length && query[0] !== '?')
         ? `?${query}`
-        : query;
+        : query || '';
 
     const url = API_ENDPOINT + query;
 
-    return (dispatch) => {
-        let movieList = JSON.parse(localStorage.getItem(STORAGE_NAME));
-        if (movieList && movieList.length) {
-            dispatch(setFullListState(movieList));
-        }
+    const response = yield call(fetch, url);
+    const value = yield response.json();
 
-        return fetch(url)
-            .then(response => response.json())
-            .then(value => {
-                if (!(value && value.data)) {
-                    return;
-                }
+    const movieList = value.data.map(transformMovieData);
 
-                let movieList = value.data.map(transformMovieData);
+    yield put(setFullListState(movieList));
+}
+export function* watchFetchData() {
+    yield takeLatest(FETCH_DATA_ACTION, fetchDataAsync);
+}
 
-                localStorage.setItem(STORAGE_NAME, JSON.stringify(movieList));
-
-                dispatch(setFullListState(movieList));
-
-            });
-    };
+// Users Saga
+export function* moviesSaga() {
+    yield all([
+        watchFetchData()
+    ]);
 }

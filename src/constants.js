@@ -19,3 +19,5 @@ export const SEARCH_TITLE = 'title';
 export const SEARCH_GENRE = 'genre';
 
 export const API_ENDPOINT = 'http://react-cdp-api.herokuapp.com/movies';
+
+export const FETCH_DATA_ACTION = 'FETCH_DATA';

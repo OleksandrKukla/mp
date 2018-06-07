@@ -4,6 +4,7 @@ import {withRouter} from 'react-router';
 import {bindActionCreators} from "redux";
 import {fetchData} from "../redux/actions";
 import {connect} from "react-redux";
+import URLSearchParams from 'url-search-params';
 
 import Button from './Button';
 
