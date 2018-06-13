@@ -9,7 +9,8 @@
     "build": "cross-env NODE_ENV=production webpack --config ./webpack",
     "server": "node ./server/",
     "build-test": "concurrently --kill-others \"node server.js\" \"npx cypress open\"",
-    "lint": "eslint ./ --cache --ignore-path .gitignore --fix"
+    "lint": "eslint ./ --cache --ignore-path .gitignore --fix",
+    "flow": "flow"
   },
   "author": "",
   "license": "ISC",
@@ -41,6 +42,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-react-statements": "^0.7.3",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "bootstrap": "^4.1.1",
