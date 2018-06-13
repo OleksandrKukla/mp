@@ -1,0 +1,17 @@
+node_modules/
+
+dist/
+
+server/
+
+*.test.js
+
+coverage/
+
+cypress/
+
+public/
+
+test-report/
+
+__mock__/

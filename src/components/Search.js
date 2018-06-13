@@ -1,66 +1,66 @@
 import React from 'react';
-import {withRouter} from 'react-router';
+import { withRouter } from 'react-router';
 
-import {bindActionCreators} from "redux";
-import {fetchData} from "../redux/actions";
-import {connect} from "react-redux";
+import { bindActionCreators } from 'redux';
+import { fetchData } from '../redux/actions';
+import { connect } from 'react-redux';
 import URLSearchParams from 'url-search-params';
 
 import Button from './Button';
 
 import {
-    SEARCH_PARAM_NAME,
-    SEARCHBY_PARAM_NAME,
-    SEARCH_TITLE,
-    SEARCH_GENRE
+  SEARCH_PARAM_NAME,
+  SEARCHBY_PARAM_NAME,
+  SEARCH_TITLE,
+  SEARCH_GENRE,
 } from '../constants';
 
 
 class Search extends React.PureComponent {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        const searchParams = new URLSearchParams(this.props.location.search);
+    const searchParams = new URLSearchParams(this.props.location.search);
 
-        this.state = {
-            searchParams,
-            searchString: searchParams.get(SEARCH_PARAM_NAME) || '',
-            searchBy: searchParams.get(SEARCHBY_PARAM_NAME) || SEARCH_TITLE
-        };
-    }
+    this.state = {
+      searchParams,
+      searchString: searchParams.get(SEARCH_PARAM_NAME) || '',
+      searchBy: searchParams.get(SEARCHBY_PARAM_NAME) || SEARCH_TITLE,
+    };
+  }
 
     handleChange = (event) => {
-        this.setState({
-            searchString: event.target.value || ''
-        });
+      this.setState({
+        searchString: event.target.value || '',
+      });
     };
 
     setSearchType = (type) => {
-        this.setState({
-            searchBy: type
-        });
+      this.setState({
+        searchBy: type,
+      });
     };
 
     submit = (event) => {
-        this.state.searchParams.set(SEARCHBY_PARAM_NAME, this.state.searchBy);
-        this.state.searchParams.set(SEARCH_PARAM_NAME, this.state.searchString);
+      this.state.searchParams.set(SEARCHBY_PARAM_NAME, this.state.searchBy);
+      this.state.searchParams.set(SEARCH_PARAM_NAME, this.state.searchString);
 
-        const search = this.state.searchParams.toString();
+      const search = this.state.searchParams.toString();
 
-        this.props.history.push({
-            ...this.props.location,
-            search
-        });
+      this.props.history.push({
+        ...this.props.location,
+        search,
+      });
 
-        this.props.fetchData(search);
+      this.props.fetchData(search);
 
-        event.preventDefault();
+      event.preventDefault();
     };
 
     render() {
-        const _this = this;
+      const _this = this;
 
-        return (
+      return (
             <React.Fragment>
                 <div className="form-row mt-3 mb-3">
                     <form className="col" onSubmit={this.submit}>
@@ -102,14 +102,14 @@ class Search extends React.PureComponent {
                     </div>
                 </div>
             </React.Fragment>
-        )
+      );
     }
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({fetchData}, dispatch);
+  return bindActionCreators({ fetchData }, dispatch);
 }
 
 const SearchWithRouter = withRouter(Search);
 
-export default connect(null, mapDispatchToProps, null, {pure: false})(SearchWithRouter);
+export default connect(null, mapDispatchToProps, null, { pure: false })(SearchWithRouter);

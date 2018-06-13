@@ -15,7 +15,7 @@ const SearchButton = () => (
     </Router.Link>
 );
 
-export default (props) => (
+export default props => (
     <header>
         <BackgroundContainer img={backgroundImage} filter="rgba(0,0,0,0.4)">
             <div className="container">

@@ -1,12 +1,11 @@
 import React from 'react';
 
 export default function (props) {
+  const movieInfo = props.movieList.find(el => (
+    String(el.id) === props.match.params.movieID
+  ));
 
-    let movieInfo = props.movieList.find((el) => (
-        String(el.id) === props.match.params.movieID
-    ));
-
-    return (
+  return (
         <React.Fragment>
             <If true={movieInfo}>
                 <div className="row pt-3 pb-5">
@@ -38,5 +37,5 @@ export default function (props) {
                 </div>
             </If>
         </React.Fragment>
-    );
+  );
 }

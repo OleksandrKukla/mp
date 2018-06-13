@@ -5,11 +5,10 @@ import SearchResultsCount from './SearchResultsCount';
 
 import SortingPanel from '../containers/SortingPanel.container';
 
-export default ({movieList, category}) => {
+export default ({ movieList, category }) => {
+  const isHome = !!(movieList && movieList.length && !category);
 
-    const isHome = !!(movieList && movieList.length && !category);
-
-    return (
+  return (
         <BackgroundContainer filter="#eee">
             <If true={isHome}>
                 <div className="container pt-2 pb-2 clearfix">
@@ -34,5 +33,5 @@ export default ({movieList, category}) => {
                 </div>
             </If>
         </BackgroundContainer>
-    );
+  );
 };

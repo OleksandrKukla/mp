@@ -1,11 +1,11 @@
 import 'isomorphic-fetch';
 import React from 'react';
 import * as RouterDOM from 'react-router-dom';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {Provider} from 'react-redux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Provider } from 'react-redux';
 
-import {fetchData} from '../redux/actions';
+import { fetchData } from '../redux/actions';
 
 import Home from '../pages/Home';
 import Details from '../containers/Details.container';
@@ -26,19 +26,18 @@ export const Content = () => (
 );
 
 class App extends React.PureComponent {
+  componentWillMount() {
+    const location = this.props.location;
 
-    componentWillMount() {
-        const location = this.props.location;
+    const search = (typeof location === 'string')
+      ? location.split('?')[1]
+      : window && window.location.search;
 
-        const search = (typeof location === 'string')
-            ? location.split('?')[1]
-            : window && window.location.search;
+    this.props.fetchData(search);
+  }
 
-        this.props.fetchData(search);
-    }
-
-    render() {
-        return (
+  render() {
+    return (
             <Provider store={this.props.store}>
                 <this.props.Router location={this.props.location} context={this.props.context}>
                     <React.Fragment>
@@ -54,12 +53,12 @@ class App extends React.PureComponent {
                     </React.Fragment>
                 </this.props.Router>
             </Provider>
-        );
-    };
+    );
+  }
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({fetchData}, dispatch);
+  return bindActionCreators({ fetchData }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps, null, {pure: false})(App);
+export default connect(null, mapDispatchToProps, null, { pure: false })(App);

@@ -5,7 +5,7 @@ import BackgroundContainer from './BackgroundContainer';
 import backgroundImage from '../img/bg.jpg';
 import logo from '../img/logo.png';
 
-export default (props) => (
+export default props => (
     <footer>
         <BackgroundContainer img={backgroundImage} filter="rgba(0,0,0,0.8)">
             <div className="container">

@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default ({count}) => {
-    let resultString = (count)
-            ? `${count} movies found`
-            : '';
+export default ({ count }) => {
+  const resultString = (count)
+    ? `${count} movies found`
+    : '';
 
-    return <span>{resultString}</span>;
-}
+  return <span>{resultString}</span>;
+};

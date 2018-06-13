@@ -1,13 +1,13 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import SortingPanel from '../components/SortingPanel'
+import React from 'react';
+import { connect } from 'react-redux';
+import SortingPanel from '../components/SortingPanel';
 
-const mapStateToProps = ({movies: {sortingType}}) => ({
-    sortingType
+const mapStateToProps = ({ movies: { sortingType } }) => ({
+  sortingType,
 });
 
 const mapDispatchToProps = dispatch => ({
-    dispatch
+  dispatch,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SortingPanel);
