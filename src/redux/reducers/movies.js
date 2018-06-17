@@ -1,3 +1,4 @@
+import { List } from 'immutable';
 import {
   SORTING_BY_DATE,
   SET_FULL_LIST_ACTION,
@@ -18,15 +19,16 @@ const transformMovieData = data => ({
 
 const defaultState = {
   sortingType: SORTING_BY_DATE,
-  movieFullList: [],
-  movieList: [],
+  movieFullList: List(),
+  movieList: List(),
 };
 
 const movies = (state = defaultState, action) => {
   switch (action.type) {
     case SET_FULL_LIST_ACTION:
-      let movieFullList = action.movieFullList.map(transformMovieData),
-        movieList = [...movieFullList];
+      const plainArray = action.movieFullList.map(transformMovieData),
+            movieFullList = List(plainArray),
+            movieList =  List(plainArray);
 
       return {
         ...state,

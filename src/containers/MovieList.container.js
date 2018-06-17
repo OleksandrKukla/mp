@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import MovieList from '../components/MovieList';
 
 const mapStateToProps = ({ movies: { movieList, sortingType } }) => ({
-  movieList,
+  movieList: movieList.toArray ? movieList.toArray() : movieList,
   sortingType,
 });
 
