@@ -12,7 +12,7 @@ const typeClasses = {
 type funcArg = {title: string, size: string, addClasses: string, type: string, isActive: boolean, onClick: Function};
 
 export default function ({
-    title, size, addClasses, type, isActive, onClick,
+  title, size, addClasses, type, isActive, onClick,
 }:funcArg):Object {
   const className = [
     'btn',

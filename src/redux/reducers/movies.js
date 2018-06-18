@@ -27,8 +27,8 @@ const movies = (state = defaultState, action) => {
   switch (action.type) {
     case SET_FULL_LIST_ACTION:
       const plainArray = action.movieFullList.map(transformMovieData),
-            movieFullList = List(plainArray),
-            movieList =  List(plainArray);
+        movieFullList = List(plainArray),
+        movieList = List(plainArray);
 
       return {
         ...state,
