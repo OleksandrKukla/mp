@@ -41,15 +41,15 @@ export default class MovieList extends React.PureComponent {
     );
 
     static sortList(sortingType, list) {
-      list = [...list];
+      const listDuplicated = [...list];
 
       switch (sortingType) {
         case SORTING_BY_RATING:
-          return list.sort(MovieList.compareRating);
+          return listDuplicated.sort(MovieList.compareRating);
 
         case SORTING_BY_DATE:
         default:
-          return list.sort(MovieList.compareDates);
+          return listDuplicated.sort(MovieList.compareDates);
       }
     }
 
