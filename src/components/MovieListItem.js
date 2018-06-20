@@ -1,7 +1,9 @@
 import React from 'react';
 import * as Router from 'react-router-dom';
 
-export default ({image, title, year, category, filmURL, yearSearchURL, categorySearchUrl}) => (
+export default ({
+  image, title, year, category, filmURL, yearSearchURL, categorySearchUrl,
+}) => (
     <div className="card movie-preview">
         <Router.Link to={filmURL} className="card-img-top poster-wrapper">
             <img src={image} alt={title}/>

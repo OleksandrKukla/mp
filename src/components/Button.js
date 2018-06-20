@@ -1,26 +1,30 @@
+// @flow
 import React from 'react';
 
 const typeClasses = {
-        outline: 'btn-outline-primary',
-        secondary: 'btn-secondary'
-    },
-    sizeClasses = {
-        small: 'btn-sm'
-    };
+    outline: 'btn-outline-primary',
+    secondary: 'btn-secondary',
+  },
+  sizeClasses = {
+    small: 'btn-sm',
+  };
 
-export default function ({ title, size, addClasses, type, isActive, onClick }) {
+type funcArg = {title: string, size: string, addClasses: string, type: string, isActive: boolean, onClick: Function};
 
-    let className = [
-        'btn',
-        addClasses,
-        (!isActive && typeClasses[type]) || 'btn-primary',
-        sizeClasses[size],
-        isActive && 'active'
-    ].join(' ');
+export default function ({
+  title, size, addClasses, type, isActive, onClick,
+}:funcArg):Object {
+  const className = [
+    'btn',
+    addClasses,
+    (!isActive && typeClasses[type]) || 'btn-primary',
+    sizeClasses[size],
+    isActive && 'active',
+  ].join(' ');
 
-    return (
+  return (
         <button type="button" className={className} onClick={onClick}>
             {title}
         </button>
-    )
+  );
 }

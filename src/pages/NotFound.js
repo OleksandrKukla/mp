@@ -1,12 +1,11 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Button from '../components/Button';
 
 export default class Home extends React.PureComponent {
-
-    render() {
-        return (
+  render() {
+    return (
             <React.Fragment>
                 <div className="h1 text-danger text-center p-3">
                     Page Not Found
@@ -17,6 +16,6 @@ export default class Home extends React.PureComponent {
                     </Link>
                 </div>
             </React.Fragment>
-        )
-    }
+    );
+  }
 }

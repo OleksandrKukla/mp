@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 import React from 'react';
-import {hydrate} from 'react-dom';
-import {BrowserRouter} from 'react-router-dom';
+import { hydrate } from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import configureStore from './redux/configureStore';
 
@@ -14,5 +14,5 @@ hydrate(
         Router={BrowserRouter}
         store={store}
     />,
-    document.getElementById('root')
+    document.getElementById('root'),
 );

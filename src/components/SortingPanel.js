@@ -2,25 +2,21 @@ import React from 'react';
 
 import Button from './Button';
 
-import {setSortingType} from '../redux/actions/index';
+import { setSortingType } from '../redux/actions/index';
 
-import {SORTING_BY_RATING, SORTING_BY_DATE} from '../constants';
+import { SORTING_BY_RATING, SORTING_BY_DATE } from '../constants';
 
 export default class SortingPanel extends React.PureComponent {
     sortByDate = () => {
-        this.props.dispatch(
-            setSortingType(SORTING_BY_DATE)
-        );
+      this.props.dispatch(setSortingType(SORTING_BY_DATE));
     };
 
     sortByRating = () => {
-        this.props.dispatch(
-            setSortingType(SORTING_BY_RATING)
-        )
+      this.props.dispatch(setSortingType(SORTING_BY_RATING));
     };
 
     render() {
-        return (
+      return (
             <React.Fragment>
                 <span className="mr-2">Sort By</span>
                 <Button title="release date"
@@ -38,6 +34,6 @@ export default class SortingPanel extends React.PureComponent {
                     onClick={this.sortByRating}
                 />
             </React.Fragment>
-        )
+      );
     }
 }

@@ -1,18 +1,37 @@
 import React from 'react';
+import injectSheet from 'react-jss';
 
-export default function (props) {
+const styles = {
+    posterWrapper: {
+        paddingBottom: '148%',
+        background: '#999',
+        position: 'relative',
+        overflow: 'hidden',
+    },
+    posterImg: {
+        position: 'absolute',
+        maxWidth: '100%',
+        maxHeight: '100%',
+        left: '50%',
+        top: '50%',
+        transform: 'translate(-50%, -50%)',
+    },
+};
 
-    let movieInfo = props.movieList.find((el) => (
-        String(el.id) === props.match.params.movieID
-    ));
+const MovieDetails = (props) => {
+  const movieInfo = props.movieList.find(el => (
+    String(el.id) === props.match.params.movieID
+  ));
 
-    return (
+  const {classes} = props;
+
+  return (
         <React.Fragment>
             <If true={movieInfo}>
                 <div className="row pt-3 pb-5">
                     <div className="col-4">
-                        <div className="poster-wrapper">
-                            <img src={movieInfo.image} alt={movieInfo.title}/>
+                        <div className={classes.posterWrapper}>
+                            <img className={classes.posterImg} src={movieInfo.image} alt={movieInfo.title}/>
                         </div>
                     </div>
                     <div className="col-8 text-white">
@@ -38,5 +57,7 @@ export default function (props) {
                 </div>
             </If>
         </React.Fragment>
-    );
-}
+  );
+};
+
+export default injectSheet(styles)(MovieDetails);
